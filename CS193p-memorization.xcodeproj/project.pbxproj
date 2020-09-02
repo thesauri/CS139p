@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D1177FC62500435400A3DB4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1177FC52500435400A3DB4C /* AppDelegate.swift */; };
+		D1177FC82500435400A3DB4C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1177FC72500435400A3DB4C /* SceneDelegate.swift */; };
+		D1177FCA2500435500A3DB4C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1177FC92500435500A3DB4C /* ContentView.swift */; };
+		D1177FCC2500435700A3DB4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1177FCB2500435700A3DB4C /* Assets.xcassets */; };
+		D1177FCF2500435700A3DB4C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1177FCE2500435700A3DB4C /* Preview Assets.xcassets */; };
+		D1177FD22500435700A3DB4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1177FD02500435700A3DB4C /* LaunchScreen.storyboard */; };
+		D1177FDD2500435700A3DB4C /* CS193p_memorizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1177FDC2500435700A3DB4C /* CS193p_memorizationTests.swift */; };
+		D1177FE82500435700A3DB4C /* CS193p_memorizationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1177FE72500435700A3DB4C /* CS193p_memorizationUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D1177FD92500435700A3DB4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1177FBA2500435400A3DB4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1177FC12500435400A3DB4C;
+			remoteInfo = "CS193p-memorization";
+		};
+		D1177FE42500435700A3DB4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D1177FBA2500435400A3DB4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D1177FC12500435400A3DB4C;
+			remoteInfo = "CS193p-memorization";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D1177FC22500435400A3DB4C /* CS193p-memorization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CS193p-memorization.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1177FC52500435400A3DB4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D1177FC72500435400A3DB4C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D1177FC92500435500A3DB4C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D1177FCB2500435700A3DB4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D1177FCE2500435700A3DB4C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D1177FD12500435700A3DB4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D1177FD32500435700A3DB4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1177FD82500435700A3DB4C /* CS193p-memorizationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CS193p-memorizationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1177FDC2500435700A3DB4C /* CS193p_memorizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CS193p_memorizationTests.swift; sourceTree = "<group>"; };
+		D1177FDE2500435700A3DB4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1177FE32500435700A3DB4C /* CS193p-memorizationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CS193p-memorizationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1177FE72500435700A3DB4C /* CS193p_memorizationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CS193p_memorizationUITests.swift; sourceTree = "<group>"; };
+		D1177FE92500435700A3DB4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D1177FBF2500435400A3DB4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1177FD52500435700A3DB4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1177FE02500435700A3DB4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D1177FB92500435400A3DB4C = {
+			isa = PBXGroup;
+			children = (
+				D1177FC42500435400A3DB4C /* CS193p-memorization */,
+				D1177FDB2500435700A3DB4C /* CS193p-memorizationTests */,
+				D1177FE62500435700A3DB4C /* CS193p-memorizationUITests */,
+				D1177FC32500435400A3DB4C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D1177FC32500435400A3DB4C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D1177FC22500435400A3DB4C /* CS193p-memorization.app */,
+				D1177FD82500435700A3DB4C /* CS193p-memorizationTests.xctest */,
+				D1177FE32500435700A3DB4C /* CS193p-memorizationUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D1177FC42500435400A3DB4C /* CS193p-memorization */ = {
+			isa = PBXGroup;
+			children = (
+				D1177FC52500435400A3DB4C /* AppDelegate.swift */,
+				D1177FC72500435400A3DB4C /* SceneDelegate.swift */,
+				D1177FC92500435500A3DB4C /* ContentView.swift */,
+				D1177FCB2500435700A3DB4C /* Assets.xcassets */,
+				D1177FD02500435700A3DB4C /* LaunchScreen.storyboard */,
+				D1177FD32500435700A3DB4C /* Info.plist */,
+				D1177FCD2500435700A3DB4C /* Preview Content */,
+			);
+			path = "CS193p-memorization";
+			sourceTree = "<group>";
+		};
+		D1177FCD2500435700A3DB4C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D1177FCE2500435700A3DB4C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D1177FDB2500435700A3DB4C /* CS193p-memorizationTests */ = {
+			isa = PBXGroup;
+			children = (
+				D1177FDC2500435700A3DB4C /* CS193p_memorizationTests.swift */,
+				D1177FDE2500435700A3DB4C /* Info.plist */,
+			);
+			path = "CS193p-memorizationTests";
+			sourceTree = "<group>";
+		};
+		D1177FE62500435700A3DB4C /* CS193p-memorizationUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D1177FE72500435700A3DB4C /* CS193p_memorizationUITests.swift */,
+				D1177FE92500435700A3DB4C /* Info.plist */,
+			);
+			path = "CS193p-memorizationUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D1177FC12500435400A3DB4C /* CS193p-memorization */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1177FEC2500435700A3DB4C /* Build configuration list for PBXNativeTarget "CS193p-memorization" */;
+			buildPhases = (
+				D1177FBE2500435400A3DB4C /* Sources */,
+				D1177FBF2500435400A3DB4C /* Frameworks */,
+				D1177FC02500435400A3DB4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CS193p-memorization";
+			productName = "CS193p-memorization";
+			productReference = D1177FC22500435400A3DB4C /* CS193p-memorization.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D1177FD72500435700A3DB4C /* CS193p-memorizationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1177FEF2500435700A3DB4C /* Build configuration list for PBXNativeTarget "CS193p-memorizationTests" */;
+			buildPhases = (
+				D1177FD42500435700A3DB4C /* Sources */,
+				D1177FD52500435700A3DB4C /* Frameworks */,
+				D1177FD62500435700A3DB4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1177FDA2500435700A3DB4C /* PBXTargetDependency */,
+			);
+			name = "CS193p-memorizationTests";
+			productName = "CS193p-memorizationTests";
+			productReference = D1177FD82500435700A3DB4C /* CS193p-memorizationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D1177FE22500435700A3DB4C /* CS193p-memorizationUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D1177FF22500435700A3DB4C /* Build configuration list for PBXNativeTarget "CS193p-memorizationUITests" */;
+			buildPhases = (
+				D1177FDF2500435700A3DB4C /* Sources */,
+				D1177FE02500435700A3DB4C /* Frameworks */,
+				D1177FE12500435700A3DB4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D1177FE52500435700A3DB4C /* PBXTargetDependency */,
+			);
+			name = "CS193p-memorizationUITests";
+			productName = "CS193p-memorizationUITests";
+			productReference = D1177FE32500435700A3DB4C /* CS193p-memorizationUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D1177FBA2500435400A3DB4C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1170;
+				LastUpgradeCheck = 1170;
+				ORGANIZATIONNAME = "Walter Berggren";
+				TargetAttributes = {
+					D1177FC12500435400A3DB4C = {
+						CreatedOnToolsVersion = 11.7;
+					};
+					D1177FD72500435700A3DB4C = {
+						CreatedOnToolsVersion = 11.7;
+						TestTargetID = D1177FC12500435400A3DB4C;
+					};
+					D1177FE22500435700A3DB4C = {
+						CreatedOnToolsVersion = 11.7;
+						TestTargetID = D1177FC12500435400A3DB4C;
+					};
+				};
+			};
+			buildConfigurationList = D1177FBD2500435400A3DB4C /* Build configuration list for PBXProject "CS193p-memorization" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D1177FB92500435400A3DB4C;
+			productRefGroup = D1177FC32500435400A3DB4C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D1177FC12500435400A3DB4C /* CS193p-memorization */,
+				D1177FD72500435700A3DB4C /* CS193p-memorizationTests */,
+				D1177FE22500435700A3DB4C /* CS193p-memorizationUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D1177FC02500435400A3DB4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1177FD22500435700A3DB4C /* LaunchScreen.storyboard in Resources */,
+				D1177FCF2500435700A3DB4C /* Preview Assets.xcassets in Resources */,
+				D1177FCC2500435700A3DB4C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1177FD62500435700A3DB4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1177FE12500435700A3DB4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D1177FBE2500435400A3DB4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1177FC62500435400A3DB4C /* AppDelegate.swift in Sources */,
+				D1177FC82500435400A3DB4C /* SceneDelegate.swift in Sources */,
+				D1177FCA2500435500A3DB4C /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1177FD42500435700A3DB4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1177FDD2500435700A3DB4C /* CS193p_memorizationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1177FDF2500435700A3DB4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1177FE82500435700A3DB4C /* CS193p_memorizationUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D1177FDA2500435700A3DB4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1177FC12500435400A3DB4C /* CS193p-memorization */;
+			targetProxy = D1177FD92500435700A3DB4C /* PBXContainerItemProxy */;
+		};
+		D1177FE52500435700A3DB4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D1177FC12500435400A3DB4C /* CS193p-memorization */;
+			targetProxy = D1177FE42500435700A3DB4C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D1177FD02500435700A3DB4C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D1177FD12500435700A3DB4C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D1177FEA2500435700A3DB4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D1177FEB2500435700A3DB4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D1177FED2500435700A3DB4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"CS193p-memorization/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "CS193p-memorization/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "fi.aalto.berggren.walter.CS193p-memorization";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D1177FEE2500435700A3DB4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"CS193p-memorization/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "CS193p-memorization/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "fi.aalto.berggren.walter.CS193p-memorization";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D1177FF02500435700A3DB4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "CS193p-memorizationTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "fi.aalto.berggren.walter.CS193p-memorizationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CS193p-memorization.app/CS193p-memorization";
+			};
+			name = Debug;
+		};
+		D1177FF12500435700A3DB4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "CS193p-memorizationTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "fi.aalto.berggren.walter.CS193p-memorizationTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CS193p-memorization.app/CS193p-memorization";
+			};
+			name = Release;
+		};
+		D1177FF32500435700A3DB4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "CS193p-memorizationUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "fi.aalto.berggren.walter.CS193p-memorizationUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "CS193p-memorization";
+			};
+			name = Debug;
+		};
+		D1177FF42500435700A3DB4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "CS193p-memorizationUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "fi.aalto.berggren.walter.CS193p-memorizationUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "CS193p-memorization";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D1177FBD2500435400A3DB4C /* Build configuration list for PBXProject "CS193p-memorization" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1177FEA2500435700A3DB4C /* Debug */,
+				D1177FEB2500435700A3DB4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1177FEC2500435700A3DB4C /* Build configuration list for PBXNativeTarget "CS193p-memorization" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1177FED2500435700A3DB4C /* Debug */,
+				D1177FEE2500435700A3DB4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1177FEF2500435700A3DB4C /* Build configuration list for PBXNativeTarget "CS193p-memorizationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1177FF02500435700A3DB4C /* Debug */,
+				D1177FF12500435700A3DB4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D1177FF22500435700A3DB4C /* Build configuration list for PBXNativeTarget "CS193p-memorizationUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D1177FF32500435700A3DB4C /* Debug */,
+				D1177FF42500435700A3DB4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D1177FBA2500435400A3DB4C /* Project object */;
+}
