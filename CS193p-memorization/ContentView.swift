@@ -39,7 +39,7 @@ struct Card: View {
                     .fill(Color.orange)
             }
         }
-            .aspectRatio(1.5, contentMode: .fit)
+            .aspectRatio(2/3, contentMode: .fit)
     }
 }
 
