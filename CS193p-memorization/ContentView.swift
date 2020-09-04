@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         HStack() {
             ForEach(emojiCardGame.cards) { card in
-                Card(isFaceUp: card.isFaceUp).onTapGesture {
+                Card(card: card).onTapGesture {
                     self.emojiCardGame.choose(card: card)
                 }
             }
@@ -24,16 +24,16 @@ struct ContentView: View {
 }
 
 struct Card: View {
-    var isFaceUp: Bool
+    var card: MemoryGame<String>.Card
 
     var body: some View {
         ZStack() {
-            if isFaceUp {
+            if card.isFaceUp {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.orange)
-                Text("🤓").font(Font.largeTitle)
+                Text(card.content).font(Font.largeTitle)
             } else {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.orange)
