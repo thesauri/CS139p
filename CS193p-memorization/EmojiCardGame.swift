@@ -12,8 +12,9 @@ class EmojiCardGame {
     private var memoryGame: MemoryGame<String> = createMemoryGame()
 
     static func createMemoryGame() -> MemoryGame<String> {
-        let emojis = ["🦠", "🌭", "🤓", "💨"]
-        return MemoryGame(numberOfCardPairs: emojis.count) { pairIndex in
+        let emojis = ["🦠", "🌭", "🤓", "💨", "🇸🇪"]
+        let betweenTwoAndFiveCardPairs = Int.random(in: 2...5)
+        return MemoryGame(numberOfCardPairs: betweenTwoAndFiveCardPairs) { pairIndex in
             emojis[pairIndex]
         }
     }

@@ -20,6 +20,7 @@ struct ContentView: View {
             }
         }
             .padding()
+            .font(emojiCardGame.cards.count / 2 == 5 ? Font.title : Font.largeTitle)
     }
 }
 
@@ -33,7 +34,7 @@ struct Card: View {
                     .fill(Color.white)
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.orange)
-                Text(card.content).font(Font.largeTitle)
+                Text(card.content)
             } else {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.orange)
