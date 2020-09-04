@@ -15,6 +15,8 @@
 		D1177FD22500435700A3DB4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1177FD02500435700A3DB4C /* LaunchScreen.storyboard */; };
 		D1177FDD2500435700A3DB4C /* CS193p_memorizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1177FDC2500435700A3DB4C /* CS193p_memorizationTests.swift */; };
 		D1177FE82500435700A3DB4C /* CS193p_memorizationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1177FE72500435700A3DB4C /* CS193p_memorizationUITests.swift */; };
+		D1327B2B25026C24009B4F58 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1327B2A25026C24009B4F58 /* MemoryGame.swift */; };
+		D1327B2D25026D8C009B4F58 /* EmojiCardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1327B2C25026D8C009B4F58 /* EmojiCardGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		D1177FE32500435700A3DB4C /* CS193p-memorizationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CS193p-memorizationUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1177FE72500435700A3DB4C /* CS193p_memorizationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CS193p_memorizationUITests.swift; sourceTree = "<group>"; };
 		D1177FE92500435700A3DB4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1327B2A25026C24009B4F58 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
+		D1327B2C25026D8C009B4F58 /* EmojiCardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiCardGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				D1177FD02500435700A3DB4C /* LaunchScreen.storyboard */,
 				D1177FD32500435700A3DB4C /* Info.plist */,
 				D1177FCD2500435700A3DB4C /* Preview Content */,
+				D1327B2A25026C24009B4F58 /* MemoryGame.swift */,
+				D1327B2C25026D8C009B4F58 /* EmojiCardGame.swift */,
 			);
 			path = "CS193p-memorization";
 			sourceTree = "<group>";
@@ -268,7 +274,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1177FC62500435400A3DB4C /* AppDelegate.swift in Sources */,
+				D1327B2B25026C24009B4F58 /* MemoryGame.swift in Sources */,
 				D1177FC82500435400A3DB4C /* SceneDelegate.swift in Sources */,
+				D1327B2D25026D8C009B4F58 /* EmojiCardGame.swift in Sources */,
 				D1177FCA2500435500A3DB4C /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
