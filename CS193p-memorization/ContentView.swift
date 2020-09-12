@@ -13,7 +13,7 @@ struct ContentView: View {
 
     var body: some View {
         HStack() {
-            ForEach(emojiCardGame.cards.filter { !$0.isMatched }) { card in
+            ForEach(emojiCardGame.cards.filter { !($0.isMatched && !$0.isFaceUp) }) { card in
                 Card(card: card).onTapGesture {
                     self.emojiCardGame.choose(card: card)
                 }
