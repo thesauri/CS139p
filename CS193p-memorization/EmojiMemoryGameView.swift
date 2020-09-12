@@ -12,14 +12,12 @@ struct EmojiMemoryGameView: View {
     @ObservedObject var emojiCardGame: EmojiMemoryGame
 
     var body: some View {
-        HStack() {
-            ForEach(emojiCardGame.cards.filter { !($0.isMatched && !$0.isFaceUp) }) { card in
-                Card(card: card).onTapGesture {
-                    self.emojiCardGame.choose(card: card)
-                }
+        Grid(emojiCardGame.cards) { card in
+            Card(card: card).onTapGesture {
+                self.emojiCardGame.choose(card: card)
             }
-        }
             .padding()
+        }
     }
 }
 
