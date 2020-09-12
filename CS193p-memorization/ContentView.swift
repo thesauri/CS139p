@@ -20,7 +20,6 @@ struct ContentView: View {
             }
         }
             .padding()
-            .font(emojiCardGame.cards.count / 2 == 5 ? Font.title : Font.largeTitle)
     }
 }
 
@@ -28,20 +27,27 @@ struct Card: View {
     var card: MemoryGame<String>.Card
 
     var body: some View {
-        ZStack() {
-            if card.isFaceUp {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.white)
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.orange)
-                Text(card.content)
-            } else {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.orange)
+        GeometryReader() { geometry in
+            ZStack() {
+                if self.card.isFaceUp {
+                    RoundedRectangle(cornerRadius: self.cornerRadius)
+                        .fill(Color.white)
+                    RoundedRectangle(cornerRadius: self.cornerRadius)
+                        .stroke(Color.orange)
+                    Text(self.card.content)
+                        .font(.system(size: self.emojiSizeScalingFactor * min(geometry.size.width, geometry.size.height)))
+                } else {
+                    RoundedRectangle(cornerRadius: self.cornerRadius)
+                        .fill(Color.orange)
+                }
             }
-        }
             .aspectRatio(2/3, contentMode: .fit)
+        }
     }
+
+    // MARK: - Constants
+    let emojiSizeScalingFactor: CGFloat = 0.75
+    let cornerRadius: CGFloat = 10.0
 }
 
 struct ContentView_Previews: PreviewProvider {
