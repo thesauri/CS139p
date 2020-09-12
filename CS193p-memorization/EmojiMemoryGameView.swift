@@ -35,8 +35,10 @@ struct Card: View {
                     Text(self.card.content)
                         .font(.system(size: self.emojiSizeScalingFactor * min(geometry.size.width, geometry.size.height)))
                 } else {
-                    RoundedRectangle(cornerRadius: self.cornerRadius)
-                        .fill(Color.orange)
+                    if !self.card.isMatched {
+                        RoundedRectangle(cornerRadius: self.cornerRadius)
+                            .fill(Color.orange)
+                    }
                 }
             }
             .aspectRatio(2/3, contentMode: .fit)
