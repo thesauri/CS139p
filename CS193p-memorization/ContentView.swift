@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    var emojiCardGame: EmojiCardGame
+    @ObservedObject var emojiCardGame: EmojiMemoryGame
 
     var body: some View {
         HStack() {
-            ForEach(emojiCardGame.cards) { card in
+            ForEach(emojiCardGame.cards.filter { !$0.isMatched }) { card in
                 Card(card: card).onTapGesture {
                     self.emojiCardGame.choose(card: card)
                 }
@@ -46,6 +46,6 @@ struct Card: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(emojiCardGame: EmojiCardGame())
+        ContentView(emojiCardGame: EmojiMemoryGame())
     }
 }
