@@ -58,7 +58,7 @@ struct HappyFaces: MemoryGameTheme {
 struct SadFaces: MemoryGameTheme {
     var name: String = "Sad Faces"
     var emojis: [String] = ["😔", "🙁", "😩", "🥺", "😭"]
-    var color: Color = Color.yellow
+    var color: Color = Color.red
     var numberOfPairsOfCards: Int? = 5
 }
 
@@ -72,13 +72,13 @@ struct Fruits: MemoryGameTheme {
 struct Vehicles: MemoryGameTheme {
     var name: String = "Vehicles"
     var emojis: [String] = ["🚗", "✈️", "🚂", "🛺", "🚀"]
-    var color: Color = Color.green
+    var color: Color = Color.blue
     var numberOfPairsOfCards: Int?
 }
 
 struct Weapons: MemoryGameTheme {
     var name: String = "Weapons"
     var emojis: [String] = ["💣", "⚔️", "🔫", "🔪", "💩"]
-    var color: Color = Color.yellow
+    var color: Color = Color.black
     var numberOfPairsOfCards: Int?
 }
