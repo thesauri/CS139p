@@ -13,7 +13,7 @@ struct EmojiMemoryGameView: View {
 
     var body: some View {
         Grid(emojiCardGame.cards) { card in
-            Card(card: card).onTapGesture {
+            Card(card: card, themeColor: self.emojiCardGame.themeColor).onTapGesture {
                 self.emojiCardGame.choose(card: card)
             }
             .padding()
@@ -23,6 +23,7 @@ struct EmojiMemoryGameView: View {
 
 struct Card: View {
     var card: MemoryGame<String>.Card
+    var themeColor: Color
 
     var body: some View {
         GeometryReader() { geometry in
@@ -31,13 +32,13 @@ struct Card: View {
                     RoundedRectangle(cornerRadius: self.cornerRadius)
                         .fill(Color.white)
                     RoundedRectangle(cornerRadius: self.cornerRadius)
-                        .stroke(Color.orange)
+                        .stroke(self.themeColor)
                     Text(self.card.content)
                         .font(.system(size: self.emojiSizeScalingFactor * min(geometry.size.width, geometry.size.height)))
                 } else {
                     if !self.card.isMatched {
                         RoundedRectangle(cornerRadius: self.cornerRadius)
-                            .fill(Color.orange)
+                            .fill(self.themeColor)
                     }
                 }
             }
