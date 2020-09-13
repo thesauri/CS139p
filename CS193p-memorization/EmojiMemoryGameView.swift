@@ -19,9 +19,10 @@ struct EmojiMemoryGameView: View {
                 }
                 .padding()
             }
-            .navigationBarTitle(emojiCardGame.theme.name)
-            .navigationBarItems(trailing:
-                Button("New game") {
+            .navigationBarTitle("Score: \(emojiCardGame.score)")
+            .navigationBarItems(
+                leading: Text(emojiCardGame.theme.name),
+                trailing: Button("New game") {
                     self.emojiCardGame.restartGame()
                 }
             )

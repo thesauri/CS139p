@@ -11,6 +11,7 @@ import Foundation
 struct MemoryGame<CardContent: Equatable> {
     var cards: Array<Card>
     var potentialSelectedCardIndex: Int?
+    var score: Int = 0
 
     init(numberOfCardPairs: Int, cardContentFactory: ((Int) -> CardContent)) {
         cards = Array<Card>()
@@ -36,10 +37,17 @@ struct MemoryGame<CardContent: Equatable> {
                 cards[chosenCardIndex].isMatched = true
                 cards[previouslyChosenCardIndex].isMatched = true
                 potentialSelectedCardIndex = nil
+
+                score += 2
             } else {
                 cards[chosenCardIndex].isFaceUp = true
                 potentialSelectedCardIndex = nil
+
+                score += cards[chosenCardIndex].isSeen ? -1 : 0
+                score += cards[previouslyChosenCardIndex].isSeen ? -1 : 0
             }
+            cards[chosenCardIndex].isSeen = true
+            cards[previouslyChosenCardIndex].isSeen = true
         } else {
             turnAllCardsFaceDown()
             cards[chosenCardIndex].isFaceUp = true
@@ -56,6 +64,7 @@ struct MemoryGame<CardContent: Equatable> {
     struct Card: Identifiable {
         var isFaceUp: Bool = false
         var isMatched: Bool = false
+        var isSeen: Bool = false
         var content: CardContent
         var id: Int
     }
