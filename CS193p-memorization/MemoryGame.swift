@@ -9,9 +9,9 @@
 import Foundation
 
 struct MemoryGame<CardContent: Equatable> {
-    var cards: Array<Card>
-    var potentialSelectedCardIndex: Int?
-    var score: Int = 0
+    private(set) var cards: Array<Card>
+    private var potentialSelectedCardIndex: Int?
+    private(set) var score: Int = 0
 
     init(numberOfCardPairs: Int, cardContentFactory: ((Int) -> CardContent)) {
         cards = Array<Card>()

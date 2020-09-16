@@ -56,8 +56,8 @@ struct Card: View {
     }
 
     // MARK: - Constants
-    let emojiSizeScalingFactor: CGFloat = 0.75
-    let cornerRadius: CGFloat = 10.0
+    private let emojiSizeScalingFactor: CGFloat = 0.75
+    private let cornerRadius: CGFloat = 10.0
 }
 
 struct ContentView_Previews: PreviewProvider {
