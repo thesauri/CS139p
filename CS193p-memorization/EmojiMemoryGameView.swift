@@ -36,35 +36,30 @@ struct Card: View {
 
     var body: some View {
         GeometryReader() { geometry in
+            self.body(for: geometry.size)
+        }
+    }
+
+    @ViewBuilder
+    private func body(for size: CGSize) -> some View {
+        if self.card.isFaceUp || !self.card.isMatched {
             ZStack() {
-                if self.card.isFaceUp {
-                    RoundedRectangle(cornerRadius: self.cornerRadius)
-                        .fill(Color.white)
-                    RoundedRectangle(cornerRadius: self.cornerRadius)
-                        .stroke(self.themeColor)
-                    Pie(
-                        startAngle: Angle.degrees(0-90),
-                        endAngle: Angle.degrees(110-90),
-                        clockwise: true
-                    )
-                        .padding(5)
-                        .opacity(0.4)
-                    Text(self.card.content)
-                        .font(.system(size: self.fontSize(for: geometry.size)))
-                } else {
-                    if !self.card.isMatched {
-                        RoundedRectangle(cornerRadius: self.cornerRadius)
-                            .fill(self.themeColor)
-                    }
-                }
+                Pie(
+                    startAngle: Angle.degrees(0-90),
+                    endAngle: Angle.degrees(110-90),
+                    clockwise: true
+                )
+                    .padding(5)
+                    .opacity(0.4)
+                Text(self.card.content)
+                    .font(.system(size: self.fontSize(for: size)))
             }
-            .aspectRatio(2/3, contentMode: .fit)
+            .cardify(isFaceUp: self.card.isFaceUp, themeColor: self.themeColor)
         }
     }
 
     // MARK: - Constants
     private let emojiSizeScalingFactor: CGFloat = 0.75
-    private let cornerRadius: CGFloat = 10.0
     private func fontSize(for size: CGSize) -> CGFloat {
         min(size.width, size.height) * 0.5
     }
