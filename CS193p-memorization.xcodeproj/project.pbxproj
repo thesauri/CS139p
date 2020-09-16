@@ -22,6 +22,7 @@
 		D1E613AB250D67B300E2C9D8 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E613AA250D67B300E2C9D8 /* Theme.swift */; };
 		D1F78B58250A5C6D0045682C /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F78B57250A5C6D0045682C /* GridLayout.swift */; };
 		D1F78B5A250A62040045682C /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F78B59250A62040045682C /* Array+Identifiable.swift */; };
+		D1FA293C251220CA00E73F42 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FA293B251220CA00E73F42 /* Pie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		D1E613AA250D67B300E2C9D8 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		D1F78B57250A5C6D0045682C /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GridLayout.swift; path = ../../../Downloads/GridLayout.swift; sourceTree = "<group>"; };
 		D1F78B59250A62040045682C /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
+		D1FA293B251220CA00E73F42 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				D1F78B59250A62040045682C /* Array+Identifiable.swift */,
 				D18C6F2A250D579700C89904 /* Grid.swift */,
 				D1E613AA250D67B300E2C9D8 /* Theme.swift */,
+				D1FA293B251220CA00E73F42 /* Pie.swift */,
 			);
 			path = "CS193p-memorization";
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				D1F78B58250A5C6D0045682C /* GridLayout.swift in Sources */,
 				D1327B2D25026D8C009B4F58 /* EmojiMemoryGame.swift in Sources */,
 				D1177FCA2500435500A3DB4C /* EmojiMemoryGameView.swift in Sources */,
+				D1FA293C251220CA00E73F42 /* Pie.swift in Sources */,
 				D18C6F29250D54E000C89904 /* GridLayout.swift in Sources */,
 				D18C6F2B250D579700C89904 /* Grid.swift in Sources */,
 			);

@@ -42,8 +42,15 @@ struct Card: View {
                         .fill(Color.white)
                     RoundedRectangle(cornerRadius: self.cornerRadius)
                         .stroke(self.themeColor)
+                    Pie(
+                        startAngle: Angle.degrees(0-90),
+                        endAngle: Angle.degrees(110-90),
+                        clockwise: true
+                    )
+                        .padding(5)
+                        .opacity(0.4)
                     Text(self.card.content)
-                        .font(.system(size: self.emojiSizeScalingFactor * min(geometry.size.width, geometry.size.height)))
+                        .font(.system(size: self.fontSize(for: geometry.size)))
                 } else {
                     if !self.card.isMatched {
                         RoundedRectangle(cornerRadius: self.cornerRadius)
@@ -58,10 +65,15 @@ struct Card: View {
     // MARK: - Constants
     private let emojiSizeScalingFactor: CGFloat = 0.75
     private let cornerRadius: CGFloat = 10.0
+    private func fontSize(for size: CGSize) -> CGFloat {
+        min(size.width, size.height) * 0.5
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        EmojiMemoryGameView(emojiCardGame: EmojiMemoryGame())
+        let game = EmojiMemoryGame()
+        game.choose(card: game.cards[1])
+        return EmojiMemoryGameView(emojiCardGame: game)
     }
 }
