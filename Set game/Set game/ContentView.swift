@@ -9,8 +9,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    var shapeSetGame = ShapeSetGame()
+
     var body: some View {
-        Text("Hello, World!")
+        GeometryReader { geometry in
+            self.body(for: geometry.size)
+        }
+    }
+
+    func body(for size: CGSize) -> some View {
+        Grid(shapeSetGame.visibleCards) { card in
+            card.content
+        }
+    }
+}
+
+struct Card: View {
+    let card: SetGame<Path>.SetCard
+
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .stroke(Color.orange)
+            card.content
+        }
     }
 }
 

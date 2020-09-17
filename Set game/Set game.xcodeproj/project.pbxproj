@@ -7,15 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1C2E493251392450018E47F /* ShapeSetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C2E492251392450018E47F /* ShapeSetGame.swift */; };
+		D1C2E4952513AAF70018E47F /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C2E4942513AAF70018E47F /* GridLayout.swift */; };
+		D1C2E4972513AC4E0018E47F /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C2E4962513AC4E0018E47F /* Grid.swift */; };
+		D1C2E4992513AC760018E47F /* Array+firstIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C2E4982513AC760018E47F /* Array+firstIndex.swift */; };
 		D1FA294C2512B07A00E73F42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FA294B2512B07A00E73F42 /* AppDelegate.swift */; };
 		D1FA294E2512B07A00E73F42 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FA294D2512B07A00E73F42 /* SceneDelegate.swift */; };
 		D1FA29502512B07A00E73F42 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FA294F2512B07A00E73F42 /* ContentView.swift */; };
 		D1FA29522512B08200E73F42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FA29512512B08200E73F42 /* Assets.xcassets */; };
 		D1FA29552512B08200E73F42 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1FA29542512B08200E73F42 /* Preview Assets.xcassets */; };
 		D1FA29582512B08200E73F42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1FA29562512B08200E73F42 /* LaunchScreen.storyboard */; };
+		D1FA29602512B22300E73F42 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1FA295F2512B22300E73F42 /* SetGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D1C2E492251392450018E47F /* ShapeSetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSetGame.swift; sourceTree = "<group>"; };
+		D1C2E4942513AAF70018E47F /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
+		D1C2E4962513AC4E0018E47F /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		D1C2E4982513AC760018E47F /* Array+firstIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+firstIndex.swift"; sourceTree = "<group>"; };
 		D1FA29482512B07A00E73F42 /* Set game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Set game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1FA294B2512B07A00E73F42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1FA294D2512B07A00E73F42 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +33,7 @@
 		D1FA29542512B08200E73F42 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D1FA29572512B08200E73F42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1FA29592512B08200E73F42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1FA295F2512B22300E73F42 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +73,11 @@
 				D1FA29562512B08200E73F42 /* LaunchScreen.storyboard */,
 				D1FA29592512B08200E73F42 /* Info.plist */,
 				D1FA29532512B08200E73F42 /* Preview Content */,
+				D1FA295F2512B22300E73F42 /* SetGame.swift */,
+				D1C2E492251392450018E47F /* ShapeSetGame.swift */,
+				D1C2E4942513AAF70018E47F /* GridLayout.swift */,
+				D1C2E4962513AC4E0018E47F /* Grid.swift */,
+				D1C2E4982513AC760018E47F /* Array+firstIndex.swift */,
 			);
 			path = "Set game";
 			sourceTree = "<group>";
@@ -148,7 +163,12 @@
 			files = (
 				D1FA294C2512B07A00E73F42 /* AppDelegate.swift in Sources */,
 				D1FA294E2512B07A00E73F42 /* SceneDelegate.swift in Sources */,
+				D1FA29602512B22300E73F42 /* SetGame.swift in Sources */,
+				D1C2E4992513AC760018E47F /* Array+firstIndex.swift in Sources */,
+				D1C2E4952513AAF70018E47F /* GridLayout.swift in Sources */,
 				D1FA29502512B07A00E73F42 /* ContentView.swift in Sources */,
+				D1C2E4972513AC4E0018E47F /* Grid.swift in Sources */,
+				D1C2E493251392450018E47F /* ShapeSetGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
