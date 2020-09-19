@@ -40,7 +40,7 @@ struct SetShape: Shape {
     }
 
     // MARK: - Shape constants
-    let roundedRectangleCornerRadius: CGFloat = 8
+    let roundedRectangleCornerRadius: CGFloat = 16
 }
 
 extension ShapeSetGameCard {
