@@ -35,7 +35,7 @@ struct SetShape: Shape {
         switch shapeType {
         case .A: return Rectangle().path(in: rect)
         case .B: return RoundedRectangle(cornerRadius: roundedRectangleCornerRadius).path(in: rect)
-        case .C: return Circle().path(in: rect)
+        case .C: return Diamond().path(in: rect)
         }
     }
 

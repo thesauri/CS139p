@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D156BB4325160C4C007BA08E /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = D156BB4225160C4C007BA08E /* Diamond.swift */; };
 		D1C2E493251392450018E47F /* ShapeSetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C2E492251392450018E47F /* ShapeSetGame.swift */; };
 		D1C2E4952513AAF70018E47F /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C2E4942513AAF70018E47F /* GridLayout.swift */; };
 		D1C2E4972513AC4E0018E47F /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C2E4962513AC4E0018E47F /* Grid.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D156BB4225160C4C007BA08E /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		D1C2E492251392450018E47F /* ShapeSetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeSetGame.swift; sourceTree = "<group>"; };
 		D1C2E4942513AAF70018E47F /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		D1C2E4962513AC4E0018E47F /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				D1C2E4942513AAF70018E47F /* GridLayout.swift */,
 				D1C2E4962513AC4E0018E47F /* Grid.swift */,
 				D1C2E4982513AC760018E47F /* Array+firstIndex.swift */,
+				D156BB4225160C4C007BA08E /* Diamond.swift */,
 			);
 			path = "Set game";
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				D1C2E4992513AC760018E47F /* Array+firstIndex.swift in Sources */,
 				D1C2E4952513AAF70018E47F /* GridLayout.swift in Sources */,
 				D1FA29502512B07A00E73F42 /* ContentView.swift in Sources */,
+				D156BB4325160C4C007BA08E /* Diamond.swift in Sources */,
 				D1C2E4972513AC4E0018E47F /* Grid.swift in Sources */,
 				D1C2E493251392450018E47F /* ShapeSetGame.swift in Sources */,
 			);
