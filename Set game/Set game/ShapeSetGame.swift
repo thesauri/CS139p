@@ -23,8 +23,21 @@ class ShapeSetGame: ObservableObject {
         setGame.cardStack
     }
 
-    var visibleCards: [ShapeSetGameCard] {
-        Array(setGame.cardStack[0..<12])
+    var dealtCards: [ShapeSetGameCard] {
+        let dealtUnsortedCards = setGame.cardStack.filter { card in
+            switch card.dealtState {
+            case .dealtAtPosition(_): return true
+            default: return false
+            }
+        }
+        let dealtCardsInOrder = dealtUnsortedCards.sorted {
+            switch ($0.dealtState, $1.dealtState) {
+            case let (.dealtAtPosition(aPosition), .dealtAtPosition(bPosition)):
+                return aPosition < bPosition
+            default: return false
+            }
+        }
+        return dealtCardsInOrder
     }
 
     // MARK: - Intents

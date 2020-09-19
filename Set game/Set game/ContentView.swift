@@ -18,7 +18,7 @@ struct ContentView: View {
     }
 
     func body(for size: CGSize) -> some View {
-        Grid(shapeSetGame.visibleCards) { card in
+        Grid(shapeSetGame.dealtCards) { card in
             Card(card: card)
                 .padding()
                 .onTapGesture {
@@ -34,7 +34,7 @@ struct Card: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: cardCornerRadius)
-                .stroke(card.color, lineWidth: card.isSelected ? selectedLineWidth : unselectedLineWidth)
+                .stroke(card.wasIncorrectlyMatched ? Color.red : card.color, lineWidth: card.isSelected ? selectedLineWidth : unselectedLineWidth)
             content(of: card)
         }
     }
