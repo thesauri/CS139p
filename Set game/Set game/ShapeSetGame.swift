@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-struct ShapeSetGame {
-    private var setGame: SetGame<SetShape>
+class ShapeSetGame: ObservableObject {
+    @Published private var setGame: SetGame<SetShape>
 
     init() {
         self.setGame = SetGame { features in
@@ -25,6 +25,11 @@ struct ShapeSetGame {
 
     var visibleCards: [ShapeSetGameCard] {
         Array(setGame.cardStack[0..<12])
+    }
+
+    // MARK: - Intents
+    func select(card: ShapeSetGameCard) {
+        setGame.select(card: card)
     }
 }
 

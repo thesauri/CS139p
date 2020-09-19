@@ -24,15 +24,50 @@ struct SetGame<CardContent> {
             let currentSetCard = SetCard(id: index, features: features, content: cardContent)
             cardStack.append(currentSetCard)
         }
-        cardStack.shuffle()
+//        cardStack.shuffle()
     }
 
     struct SetCard: Identifiable {
         let id: Int
         let features: Features
         let content: CardContent
+        var isSelected: Bool = false
     }
 
+    mutating func select(card: SetCard) {
+        if let chosenCardIndex = cardStack.firstIndex(matching: card) {
+            cardStack[chosenCardIndex].isSelected.toggle()
+        }
+
+        if selectedCards.count == 3 {
+            if areMatch(cards: selectedCards) {
+                print("Yay!")
+            } else {
+                print("Nay")
+            }
+        }
+    }
+
+    var selectedCards: [SetCard] {
+        cardStack.filter { $0.isSelected }
+    }
+
+    func areMatch(cards: [SetCard]) -> Bool {
+        let numberOfShapes = cards.map { $0.features.numberOfShapes }
+        let shapeType = cards.map { $0.features.shapeType }
+        let shading = cards.map { $0.features.shading }
+        let color = cards.map { $0.features.color }
+        return areMatch(featureVersions: numberOfShapes) &&
+            areMatch(featureVersions: shapeType) &&
+            areMatch(featureVersions: shading) &&
+            areMatch(featureVersions: color)
+    }
+
+    func areMatch(featureVersions: [FeatureVersion]) -> Bool {
+        let featureVersionSet: Set<FeatureVersion> = Set(featureVersions)
+        let areDistinctOrSame = featureVersionSet.count == featureVersions.count || featureVersionSet.count == 1
+        return areDistinctOrSame
+    }
 }
 
 struct Features {

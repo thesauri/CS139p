@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    var shapeSetGame = ShapeSetGame()
+    @ObservedObject var shapeSetGame = ShapeSetGame()
 
     var body: some View {
         GeometryReader { geometry in
@@ -21,6 +21,9 @@ struct ContentView: View {
         Grid(shapeSetGame.visibleCards) { card in
             Card(card: card)
                 .padding()
+                .onTapGesture {
+                    self.shapeSetGame.select(card: card)
+            }
         }
     }
 }
@@ -31,7 +34,7 @@ struct Card: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: cardCornerRadius)
-                .stroke(card.color)
+                .stroke(card.color, lineWidth: card.isSelected ? selectedLineWidth : unselectedLineWidth)
             content(of: card)
         }
     }
@@ -54,6 +57,8 @@ struct Card: View {
 
     // MARK: - Drawing constants
     let cardCornerRadius: CGFloat = 16
+    let selectedLineWidth: CGFloat = 4
+    let unselectedLineWidth: CGFloat = 1
 }
 
 struct ContentView_Previews: PreviewProvider {
