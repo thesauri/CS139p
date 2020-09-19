@@ -20,6 +20,7 @@ struct ContentView: View {
     func body(for size: CGSize) -> some View {
         Grid(shapeSetGame.visibleCards) { card in
             Card(card: card)
+                .padding()
         }
     }
 }
@@ -28,19 +29,27 @@ struct Card: View {
     let card: ShapeSetGameCard
 
     var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(card.color)
+            content(of: card)
+        }
+    }
+
+    func content(of card: ShapeSetGameCard) -> some View{
         VStack {
-            ForEach(0..<self.card.numberOfShapes) { index in
-                if self.card.isFilled {
-                    self.card.content
-                        .fill(self.card.color)
+            ForEach(0..<card.numberOfShapes) { index in
+                if card.isFilled {
+                    card.content
+                        .fill(card.color)
                 } else {
-                    self.card.content
-                        .stroke(self.card.color)
+                    card.content
+                        .stroke(card.color)
                 }
             }
             .opacity(card.opacity)
         }
-    .padding()
+        .padding()
     }
 }
 
