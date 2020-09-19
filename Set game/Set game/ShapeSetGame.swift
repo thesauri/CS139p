@@ -40,7 +40,20 @@ class ShapeSetGame: ObservableObject {
         return dealtCardsInOrder
     }
 
+    var isDeckEmpty: Bool {
+        setGame.cardStack.filter { card in
+            switch card.dealtState {
+            case .inDeck: return true
+            default: return false
+            }
+        }.count == 0
+    }
+
     // MARK: - Intents
+    func dealThreeMoreCards() {
+        setGame.dealThreeMoreCards()
+    }
+
     func select(card: ShapeSetGameCard) {
         setGame.select(card: card)
     }

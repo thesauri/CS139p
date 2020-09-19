@@ -13,6 +13,7 @@ struct SetGame<CardContent> {
     private var indexOfNextUndealtCard: Int = 0
     private var shouldResetSelected = false
     private var shouldRemoveMatchedCards = false
+    private var nextCardPosition = 0
 
     init(cardContentFactory: ((Features) -> CardContent)) {
         cardStack = []
@@ -29,7 +30,7 @@ struct SetGame<CardContent> {
         }
 //        cardStack.shuffle()
         for position in 0..<12 {
-            dealCard(at: position)
+            dealCard()
         }
     }
 
@@ -76,6 +77,17 @@ struct SetGame<CardContent> {
         }
     }
 
+    mutating func dealThreeMoreCards() {
+        if shouldRemoveMatchedCards {
+            removeMatchedAndDealNewCards()
+            shouldRemoveMatchedCards = false
+        } else {
+            for _ in 0..<3 {
+                dealCard()
+            }
+        }
+    }
+
     var selectedCards: [SetCard] {
         cardStack.filter { $0.isSelected }
     }
@@ -102,6 +114,11 @@ struct SetGame<CardContent> {
             cardStack[cardIndex].dealtState = DealtState.matched
             dealCard(at: matchedCardPosition)
         }
+    }
+
+    mutating func dealCard() {
+        dealCard(at: nextCardPosition)
+        nextCardPosition += 1
     }
 
     mutating func dealCard(at position: Int) {

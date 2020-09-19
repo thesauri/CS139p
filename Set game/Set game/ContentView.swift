@@ -18,12 +18,21 @@ struct ContentView: View {
     }
 
     func body(for size: CGSize) -> some View {
-        Grid(shapeSetGame.dealtCards) { card in
-            Card(card: card)
-                .padding()
-                .onTapGesture {
-                    self.shapeSetGame.select(card: card)
+        VStack {
+            Grid(shapeSetGame.dealtCards) { card in
+                Card(card: card)
+                    .padding()
+                    .onTapGesture {
+                        self.shapeSetGame.select(card: card)
+                }
             }
+            Button(action: {
+                self.shapeSetGame.dealThreeMoreCards()
+            }) {
+                Text("Deal 3 More Cards")
+            }
+            .disabled(shapeSetGame.isDeckEmpty)
+            .padding()
         }
     }
 }
