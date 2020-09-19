@@ -30,7 +30,7 @@ struct Card: View {
 
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: cardCornerRadius)
                 .stroke(card.color)
             content(of: card)
         }
@@ -51,6 +51,9 @@ struct Card: View {
         }
         .padding()
     }
+
+    // MARK: - Drawing constants
+    let cardCornerRadius: CGFloat = 16
 }
 
 struct ContentView_Previews: PreviewProvider {
