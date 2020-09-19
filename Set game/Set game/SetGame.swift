@@ -12,6 +12,7 @@ struct SetGame<CardContent> {
     private(set) var cardStack: [SetCard]
     private var indexOfNextUndealtCard: Int = 0
     private var shouldResetSelected = false
+    private var shouldRemoveMatchedCards = false
 
     init(cardContentFactory: ((Features) -> CardContent)) {
         cardStack = []
@@ -48,6 +49,11 @@ struct SetGame<CardContent> {
     }
 
     mutating func select(card: SetCard) {
+        if shouldRemoveMatchedCards {
+            removeMatchedAndDealNewCards()
+            shouldRemoveMatchedCards = false
+        }
+
         if shouldResetSelected {
             resetSelectedCards()
             resetIncorrectlyMatchedMarking()
@@ -59,20 +65,12 @@ struct SetGame<CardContent> {
         }
 
         if selectedCards.count == 3 {
-            print("Hey!")
             if areMatch(cards: selectedCards) {
-                selectedCardIndices.forEach { cardIndex in
-                    let matchedCardPosition = positionOf(card: cardStack[cardIndex])!
-                    cardStack[cardIndex].dealtState = DealtState.matched
-                    dealCard(at: matchedCardPosition)
-                }
-                print("Hey!")
+                shouldRemoveMatchedCards = true
             } else {
                 selectedCardIndices.forEach { cardIndex in
                     cardStack[cardIndex].wasIncorrectlyMatched = true
                 }
-                print("Set was incorrectly matched")
-                print(cardStack)
             }
             shouldResetSelected = true
         }
@@ -95,6 +93,14 @@ struct SetGame<CardContent> {
     mutating func resetIncorrectlyMatchedMarking() {
         cardStack.indices.forEach { cardIndex in
             cardStack[cardIndex].wasIncorrectlyMatched = false
+        }
+    }
+
+    mutating func removeMatchedAndDealNewCards() {
+        selectedCardIndices.forEach { cardIndex in
+            let matchedCardPosition = positionOf(card: cardStack[cardIndex])!
+            cardStack[cardIndex].dealtState = DealtState.matched
+            dealCard(at: matchedCardPosition)
         }
     }
 
