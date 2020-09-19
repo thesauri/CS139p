@@ -57,6 +57,13 @@ class ShapeSetGame: ObservableObject {
     func select(card: ShapeSetGameCard) {
         setGame.select(card: card)
     }
+
+    func newGame() {
+        self.setGame = SetGame { features in
+            let setShape = SetShape(shapeType: features.shapeType)
+            return setShape
+        }
+    }
 }
 
 struct SetShape: Shape {
@@ -87,7 +94,7 @@ extension ShapeSetGameCard {
         switch self.features.color {
         case .A: return Color.green
         case .B: return Color.yellow
-        case .C: return Color.orange
+        case .C: return Color.blue
         }
     }
 

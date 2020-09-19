@@ -12,28 +12,38 @@ struct ContentView: View {
     @ObservedObject var shapeSetGame = ShapeSetGame()
 
     var body: some View {
-        GeometryReader { geometry in
-            self.body(for: geometry.size)
+        NavigationView {
+            VStack {
+                game()
+                dealThreeMoreCardsButton()
+            }
+            .navigationBarTitle("Set game")
+            .navigationBarItems(trailing: Button("New Game") {
+                self.shapeSetGame.newGame()
+            })
         }
     }
 
-    func body(for size: CGSize) -> some View {
-        VStack {
-            Grid(shapeSetGame.dealtCards) { card in
+    func game() -> some View {
+        GeometryReader { geometry in
+            Grid(self.shapeSetGame.dealtCards) { card in
                 Card(card: card)
                     .padding()
                     .onTapGesture {
                         self.shapeSetGame.select(card: card)
                 }
             }
-            Button(action: {
-                self.shapeSetGame.dealThreeMoreCards()
-            }) {
-                Text("Deal 3 More Cards")
-            }
-            .disabled(shapeSetGame.isDeckEmpty)
-            .padding()
         }
+    }
+
+    func dealThreeMoreCardsButton() -> some View {
+        Button(action: {
+            self.shapeSetGame.dealThreeMoreCards()
+        }) {
+            Text("Deal 3 More Cards")
+        }
+        .disabled(shapeSetGame.isDeckEmpty)
+        .padding()
     }
 }
 

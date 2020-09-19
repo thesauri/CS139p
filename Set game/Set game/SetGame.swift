@@ -18,7 +18,7 @@ struct SetGame<CardContent> {
     init(cardContentFactory: ((Features) -> CardContent)) {
         cardStack = []
         let featureVersions = FeatureVersion.allCases
-        for index in 0..<15 {
+        for index in 0..<81 {
             let numberOfShapes = featureVersions[index % 3]
             let shapeType = featureVersions[(index / 3) % 3]
             let shading = featureVersions[(index / 9) % 3]
@@ -28,7 +28,7 @@ struct SetGame<CardContent> {
             let currentSetCard = SetCard(id: index, features: features, content: cardContent)
             cardStack.append(currentSetCard)
         }
-//        cardStack.shuffle()
+        cardStack.shuffle()
         for position in 0..<12 {
             dealCard()
         }
