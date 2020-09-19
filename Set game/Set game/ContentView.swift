@@ -19,20 +19,28 @@ struct ContentView: View {
 
     func body(for size: CGSize) -> some View {
         Grid(shapeSetGame.visibleCards) { card in
-            card.content
+            Card(card: card)
         }
     }
 }
 
 struct Card: View {
-    let card: SetGame<Path>.SetCard
+    let card: ShapeSetGameCard
 
     var body: some View {
-        ZStack {
-            Rectangle()
-                .stroke(Color.orange)
-            card.content
+        VStack {
+            ForEach(0..<self.card.numberOfShapes) { index in
+                if self.card.isFilled {
+                    self.card.content
+                        .fill(self.card.color)
+                } else {
+                    self.card.content
+                        .stroke(self.card.color)
+                }
+            }
+            .opacity(card.opacity)
         }
+    .padding()
     }
 }
 

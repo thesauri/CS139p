@@ -15,14 +15,13 @@ struct SetGame<CardContent> {
         cardStack = []
         let featureVersions = FeatureVersion.allCases
         for index in 0..<81 {
-            let currentFeatures = (
-                featureVersions[index % 3],
-                featureVersions[(index / 3) % 3],
-                featureVersions[(index / 9) % 3],
-                featureVersions[(index / 27) % 3]
-            )
-            let cardContent = cardContentFactory(currentFeatures)
-            let currentSetCard = SetCard(id: index, features: currentFeatures, content: cardContent)
+            let numberOfShapes = featureVersions[index % 3]
+            let shapeType = featureVersions[(index / 3) % 3]
+            let shading = featureVersions[(index / 9) % 3]
+            let color = featureVersions[(index / 27) % 3]
+            let features = Features(numberOfShapes: numberOfShapes, shapeType: shapeType, shading: shading, color: color)
+            let cardContent = cardContentFactory(features)
+            let currentSetCard = SetCard(id: index, features: features, content: cardContent)
             cardStack.append(currentSetCard)
         }
         cardStack.shuffle()
@@ -34,11 +33,17 @@ struct SetGame<CardContent> {
         let content: CardContent
     }
 
-    typealias Features = (FeatureVersion, FeatureVersion, FeatureVersion, FeatureVersion)
+}
 
-    enum FeatureVersion: CaseIterable {
-        case A
-        case B
-        case C
-    }
+struct Features {
+    let numberOfShapes: FeatureVersion
+    let shapeType: FeatureVersion
+    let shading: FeatureVersion
+    let color: FeatureVersion
+}
+
+enum FeatureVersion: CaseIterable {
+    case A
+    case B
+    case C
 }
