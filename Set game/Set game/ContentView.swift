@@ -19,7 +19,9 @@ struct ContentView: View {
             }
             .navigationBarTitle("Set game")
             .navigationBarItems(trailing: Button("New Game") {
-                self.shapeSetGame.newGame()
+                withAnimation(.easeInOut(duration: 1.5)) {
+                    self.shapeSetGame.newGame()
+                }
             })
         }
     }
@@ -56,6 +58,7 @@ struct Card: View {
                 .stroke(card.wasIncorrectlyMatched ? Color.red : card.color, lineWidth: card.isSelected ? selectedLineWidth : unselectedLineWidth)
             content(of: card)
         }
+        .transition(AnyTransition.offset(randomOffset(radius: 1000)))
     }
 
     func content(of card: ShapeSetGameCard) -> some View{
@@ -72,6 +75,13 @@ struct Card: View {
             .opacity(card.opacity)
         }
         .padding()
+    }
+
+    func randomOffset(radius: Int) -> CGSize {
+        let angle = Double.random(in: 0..<2*Double.pi)
+        let x = Double(radius) * cos(angle)
+        let y = Double(radius) * sin(angle)
+        return CGSize(width: x, height: y)
     }
 
     // MARK: - Drawing constants

@@ -18,6 +18,7 @@ struct SetGame<CardContent> {
     init(cardContentFactory: ((Features) -> CardContent)) {
         cardStack = []
         let featureVersions = FeatureVersion.allCases
+        let gameId = NSDate().timeIntervalSince1970 * 1000
         for index in 0..<81 {
             let numberOfShapes = featureVersions[index % 3]
             let shapeType = featureVersions[(index / 3) % 3]
@@ -25,17 +26,17 @@ struct SetGame<CardContent> {
             let color = featureVersions[(index / 27) % 3]
             let features = Features(numberOfShapes: numberOfShapes, shapeType: shapeType, shading: shading, color: color)
             let cardContent = cardContentFactory(features)
-            let currentSetCard = SetCard(id: index, features: features, content: cardContent)
+            let currentSetCard = SetCard(id: "\(gameId)-\(index)", features: features, content: cardContent)
             cardStack.append(currentSetCard)
         }
         cardStack.shuffle()
-        for position in 0..<12 {
+        for _ in 0..<12 {
             dealCard()
         }
     }
 
     struct SetCard: Identifiable {
-        let id: Int
+        let id: String
         let features: Features
         let content: CardContent
         var dealtState: DealtState = DealtState.inDeck
