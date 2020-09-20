@@ -19,7 +19,7 @@ struct ContentView: View {
             }
             .navigationBarTitle("Set game")
             .navigationBarItems(trailing: Button("New Game") {
-                withAnimation(.easeInOut(duration: 1.5)) {
+                withAnimation(.easeInOut(duration: self.flyInDuration)) {
                     self.shapeSetGame.newGame()
                 }
             })
@@ -40,13 +40,19 @@ struct ContentView: View {
 
     func dealThreeMoreCardsButton() -> some View {
         Button(action: {
-            self.shapeSetGame.dealThreeMoreCards()
+            withAnimation(.easeOut(duration: self.dealThreeMoreDuration)) {
+                self.shapeSetGame.dealThreeMoreCards()
+            }
         }) {
             Text("Deal 3 More Cards")
         }
         .disabled(shapeSetGame.isDeckEmpty)
         .padding()
     }
+
+    // MARK: - Drawing constants
+    let flyInDuration = 1.5
+    let dealThreeMoreDuration = 0.75
 }
 
 struct Card: View {
