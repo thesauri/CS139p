@@ -14,7 +14,7 @@ struct EmojiMemoryGameView: View {
     var body: some View {
         NavigationView {
             Grid(emojiCardGame.cards) { card in
-                Card(card: card, themeColor: self.emojiCardGame.theme.color).onTapGesture {
+                Card(card: card, themeColor: Color(self.emojiCardGame.theme.color)).onTapGesture {
                     withAnimation(.linear(duration: 0.75)) {
                         self.emojiCardGame.choose(card: card)
                     }
