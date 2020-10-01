@@ -10,12 +10,12 @@ import SwiftUI
 
 struct MemoryGameThemes {
     static let themes: [Theme] = [
-        Theme(name: "Faces", emojis: ["🦠", "🌭", "🤓", "💨", "🇸🇪"], color: Color.yellow),
+        Theme(name: "Faces", emojis: ["🦠", "🌭", "🤓", "💨", "🇸🇪"], color: Color.yellow, numberOfPairsOfCards: 5),
         Theme(name: "Happy Faces", emojis: ["😁", "🤓", "🙂", "😍", "😎"], color: Color.yellow, numberOfPairsOfCards: 5),
         Theme(name: "Sad Faces", emojis: ["😔", "🙁", "😩", "🥺", "😭"], color: Color.red, numberOfPairsOfCards: 5),
-        Theme(name: "Fruits", emojis: ["🍎", "🍐", "🍆", "🍑", "🍌"],  color: Color.green),
-        Theme(name: "Vehicles", emojis: ["🚗", "✈️", "🚂", "🛺", "🚀"], color: Color.blue),
-        Theme(name: "Weapons", emojis: ["💣", "⚔️", "🔫", "🔪", "💩"], color: Color.black)
+        Theme(name: "Fruits", emojis: ["🍎", "🍐", "🍆", "🍑", "🍌"],  color: Color.green, numberOfPairsOfCards: 5),
+        Theme(name: "Vehicles", emojis: ["🚗", "✈️", "🚂", "🛺", "🚀"], color: Color.blue, numberOfPairsOfCards: 5),
+        Theme(name: "Weapons", emojis: ["💣", "⚔️", "🔫", "🔪", "💩"], color: Color.black, numberOfPairsOfCards: 5)
     ]
 
     static func randomTheme() -> Theme {
@@ -26,6 +26,6 @@ struct MemoryGameThemes {
         var name: String
         var emojis: [String]
         var color: Color
-        var numberOfPairsOfCards: Int?
+        var numberOfPairsOfCards: Int
     }
 }
