@@ -12,49 +12,69 @@ struct EmojiArtDocumentView: View {
     @ObservedObject var document: EmojiArtDocument
 
     var body: some View {
-        VStack {
-            ScrollView(.horizontal) {
+        ZStack(alignment: .bottom) {
+            VStack {
                 HStack {
-                    ForEach(EmojiArtDocument.palette.map { String($0) }, id: \.self) { emoji in
-                        Text(emoji)
-                            .font(Font.system(size: self.defaultEmojiSize))
-                            .onDrag { NSItemProvider(object: emoji as NSString) }
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(EmojiArtDocument.palette.map { String($0) }, id: \.self) { emoji in
+                                Text(emoji)
+                                    .font(Font.system(size: self.defaultEmojiSize))
+                                    .onDrag { NSItemProvider(object: emoji as NSString) }
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+                    if !self.selectedEmojis.isEmpty {
+                        RemoveSelectedButton() {
+                            for selectedEmoji in self.selectedEmojis {
+                                self.document.removeEmoji(selectedEmoji)
+                            }
+                            withAnimation() {
+                                self.selectedEmojis.removeAll()
+                            }
+                        }
                     }
                 }
-            }
-            .padding(.horizontal)
-            GeometryReader { geometry in
-                ZStack {
-                    Color.white.overlay(
-                        OptionalImage(uiImage: self.document.backgroundImage)
-                            .scaleEffect(self.zoomScale)
-                            .offset(self.panOffset)
-                    )
-                        .gesture(self.doubleTapToZoom(in: geometry.size))
-                    ForEach(self.document.emojis) { emoji in
-                        Text(emoji.text)
-                            .font(animatableWithSize: self.fontSize(for: emoji))
-                            .position(self.position(for: emoji, in: geometry.size))
-                            .brightness(self.selectedEmojis.contains(emoji) ? self.selectedBrightness : 0)
-                            .gesture(self.panSelectedEmojis(emoji))
-                            .gesture(self.tapToSelectEmoji(emoji))
-                    }
-                }
-                .clipped()
-                .gesture(self.panGesture())
-                .gesture(self.zoomGesture())
-                .gesture(self.tapToDeselectAllEmojis())
-                .edgesIgnoringSafeArea([.horizontal, .bottom])
-                .onDrop(of: ["public.image","public.text"], isTargeted: nil) { providers, location in
-                    // SwiftUI bug (as of 13.4)? the location is supposed to be in our coordinate system
-                    // however, the y coordinate appears to be in the global coordinate system
-                    var location = CGPoint(x: location.x, y: geometry.convert(location, from: .global).y)
-                    location = CGPoint(x: location.x - geometry.size.width/2, y: location.y - geometry.size.height/2)
-                    location = CGPoint(x: location.x - self.panOffset.width, y: location.y - self.panOffset.height)
-                    location = CGPoint(x: location.x / self.zoomScale, y: location.y / self.zoomScale)
-                    return self.drop(providers: providers, at: location)
+                GeometryReader { geometry in
+                    self.ArtBoard(geometry: geometry)
                 }
             }
+        }
+    }
+
+    func ArtBoard(geometry: GeometryProxy) -> some View {
+        ZStack {
+            Color.white.overlay(
+                OptionalImage(uiImage: document.backgroundImage)
+                    .scaleEffect(zoomScale)
+                    .offset(panOffset)
+            )
+                .gesture(doubleTapToZoom(in: geometry.size))
+            ForEach(document.emojis) { emoji in
+                Text(emoji.text)
+                    .font(animatableWithSize: self.fontSize(for: emoji))
+                    .position(self.position(for: emoji, in: geometry.size))
+                    .brightness(self.selectedEmojis.contains(emoji) ? self.selectedBrightness : 0)
+                    .gesture(self.panSelectedEmojis(emoji))
+                    .gesture(self.tapToSelectEmoji(emoji))
+                    .transition(.opacity)
+            }
+        }
+        .clipped()
+        .contentShape(Rectangle().size(geometry.size))
+        .gesture(tapToDeselectAllEmojis())
+        .gesture(panGesture())
+        .gesture(zoomGesture())
+        .edgesIgnoringSafeArea([.horizontal, .bottom])
+        .onDrop(of: ["public.image","public.text"], isTargeted: nil) { providers, location in
+            // SwiftUI bug (as of 13.4)? the location is supposed to be in our coordinate system
+            // however, the y coordinate appears to be in the global coordinate system
+            var location = CGPoint(x: location.x, y: geometry.convert(location, from: .global).y)
+            location = CGPoint(x: location.x - geometry.size.width/2, y: location.y - geometry.size.height/2)
+            location = CGPoint(x: location.x - self.panOffset.width, y: location.y - self.panOffset.height)
+            location = CGPoint(x: location.x / self.zoomScale, y: location.y / self.zoomScale)
+            return self.drop(providers: providers, at: location)
         }
     }
 
@@ -191,6 +211,22 @@ struct EmojiArtDocumentView: View {
                 }
             }
     }
-    
+
+    struct RemoveSelectedButton: View {
+        let action: () -> Void
+
+        var body: some View {
+            Button(action: action) {
+            HStack {
+                Image(systemName: "trash")
+                Text("Remove selected")
+            }
+            .foregroundColor(.red)
+            }
+            .padding(.horizontal)
+        }
+    }
+
+
     private let defaultEmojiSize: CGFloat = 40
 }
