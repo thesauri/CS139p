@@ -9,13 +9,18 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-    @Published var theme: MemoryGameThemes.Theme
+    @Published var theme: MemoryGameThemes.Theme {
+        didSet {
+            printThemeAsJson()
+        }
+    }
     @Published private var memoryGame: MemoryGame<String>
 
     init() {
         let randomTheme = MemoryGameThemes.randomTheme()
         self.theme = randomTheme
         self.memoryGame = EmojiMemoryGame.createMemoryGame(theme: randomTheme)
+        printThemeAsJson()
     }
 
     private func randomizeThemeAndRestartGame() {
@@ -28,6 +33,13 @@ class EmojiMemoryGame: ObservableObject {
         let themeOrRandomPairCount = theme.numberOfPairsOfCards
         return MemoryGame(numberOfCardPairs: themeOrRandomPairCount) { pairIndex in
             theme.emojis[pairIndex]
+        }
+    }
+
+    private func printThemeAsJson() {
+        let encoder = JSONEncoder()
+        if let themeAsJson = (try? encoder.encode(theme))?.utf8 {
+            print(themeAsJson)
         }
     }
 
