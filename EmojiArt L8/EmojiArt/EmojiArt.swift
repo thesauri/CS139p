@@ -26,6 +26,14 @@ struct EmojiArt: Codable {
             self.size = size
             self.id = id
         }
+
+        static func == (lhs: Emoji, rhs: Emoji) -> Bool {
+            lhs.id == rhs.id
+        }
+
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+        }
     }
     
     var json: Data? {

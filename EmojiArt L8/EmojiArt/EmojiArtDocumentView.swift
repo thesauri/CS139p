@@ -32,21 +32,18 @@ struct EmojiArtDocumentView: View {
                     )
                         .gesture(self.doubleTapToZoom(in: geometry.size))
                     ForEach(self.document.emojis) { emoji in
-                        Group() {
-                            Text(emoji.text)
-                                .font(animatableWithSize: emoji.fontSize * self.zoomScale)
-                                .rotationEffect(Angle.degrees(self.selectedEmojis.contains(emoji) ? self.wiggleAmount : 0), anchor: .center)
-                                .animation(Animation.easeInOut(duration: self.wiggleDuration).repeatCount(self.selectedEmojis.contains(emoji) ? .max : 0))
-                        }
-                            .rotationEffect(Angle.degrees(self.selectedEmojis.contains(emoji) ? -1 * self.wiggleAmount/2 : 0))
-                            .animation(Animation.easeInOut(duration: self.wiggleDuration))
+                        Text(emoji.text)
+                            .font(animatableWithSize: emoji.fontSize * self.zoomScale)
                             .position(self.position(for: emoji, in: geometry.size))
+                            .brightness(self.selectedEmojis.contains(emoji) ? self.selectedBrightness : 0)
+                            .gesture(self.panSelectedEmojis(emoji))
                             .gesture(self.tapToSelectEmoji(emoji))
                     }
                 }
                 .clipped()
                 .gesture(self.panGesture())
                 .gesture(self.zoomGesture())
+                .gesture(self.tapToDeselectAllEmojis())
                 .edgesIgnoringSafeArea([.horizontal, .bottom])
                 .onDrop(of: ["public.image","public.text"], isTargeted: nil) { providers, location in
                     // SwiftUI bug (as of 13.4)? the location is supposed to be in our coordinate system
@@ -116,6 +113,9 @@ struct EmojiArtDocumentView: View {
         
     private func position(for emoji: EmojiArt.Emoji, in size: CGSize) -> CGPoint {
         var location = emoji.location
+        if selectedEmojis.contains(emoji) {
+            location = CGPoint(x: location.x + selectedEmojisPanOffset.width, y: location.y + selectedEmojisPanOffset.height)
+        }
         location = CGPoint(x: location.x * zoomScale, y: location.y * zoomScale)
         location = CGPoint(x: location.x + size.width/2, y: location.y + size.height/2)
         location = CGPoint(x: location.x + panOffset.width, y: location.y + panOffset.height)
@@ -135,14 +135,42 @@ struct EmojiArtDocumentView: View {
     }
 
     @State var selectedEmojis = Set<EmojiArt.Emoji>()
-    private let wiggleDuration: Double = 0.2
-    private let wiggleAmount: Double = 20
+    private let selectedBrightness: Double = 0.2
 
     private func tapToSelectEmoji(_ emoji: EmojiArt.Emoji) -> some Gesture {
         TapGesture()
             .onEnded {
-                self.selectedEmojis.toggle(emoji)
-                print(self.selectedEmojis)
+                withAnimation() {
+                    self.selectedEmojis.toggle(emoji)
+                }
+            }
+    }
+
+    private func tapToDeselectAllEmojis() -> some Gesture {
+        TapGesture()
+            .onEnded {
+                withAnimation() {
+                    self.selectedEmojis.removeAll()
+                }
+            }
+    }
+
+    @GestureState private var selectedEmojisPanOffset: CGSize = .zero
+
+    private func panSelectedEmojis(_ tappedEmoji: EmojiArt.Emoji) -> some Gesture {
+        return DragGesture()
+            .updating($selectedEmojisPanOffset) { latestDragGestureValue, selectedEmojisPanOffset, transaction in
+                if self.selectedEmojis.contains(tappedEmoji) {
+                    selectedEmojisPanOffset = latestDragGestureValue.translation / self.zoomScale
+                }
+            }
+            .onEnded { finalDragGestureValue in
+                let scaledTranslation = finalDragGestureValue.translation / self.zoomScale
+                if self.selectedEmojis.contains(tappedEmoji) {
+                    for selectedEmoji in self.selectedEmojis {
+                        self.document.moveEmoji(selectedEmoji, by: scaledTranslation)
+                    }
+                }
             }
     }
     
