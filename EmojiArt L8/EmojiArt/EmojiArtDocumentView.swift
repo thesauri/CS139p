@@ -10,7 +10,7 @@ import SwiftUI
 
 struct EmojiArtDocumentView: View {
     @ObservedObject var document: EmojiArtDocument
-    
+
     var body: some View {
         VStack {
             ScrollView(.horizontal) {
@@ -32,9 +32,16 @@ struct EmojiArtDocumentView: View {
                     )
                         .gesture(self.doubleTapToZoom(in: geometry.size))
                     ForEach(self.document.emojis) { emoji in
-                        Text(emoji.text)
-                            .font(animatableWithSize: emoji.fontSize * self.zoomScale)
+                        Group() {
+                            Text(emoji.text)
+                                .font(animatableWithSize: emoji.fontSize * self.zoomScale)
+                                .rotationEffect(Angle.degrees(self.selectedEmojis.contains(emoji) ? self.wiggleAmount : 0), anchor: .center)
+                                .animation(Animation.easeInOut(duration: self.wiggleDuration).repeatCount(self.selectedEmojis.contains(emoji) ? .max : 0))
+                        }
+                            .rotationEffect(Angle.degrees(self.selectedEmojis.contains(emoji) ? -1 * self.wiggleAmount/2 : 0))
+                            .animation(Animation.easeInOut(duration: self.wiggleDuration))
                             .position(self.position(for: emoji, in: geometry.size))
+                            .gesture(self.tapToSelectEmoji(emoji))
                     }
                 }
                 .clipped()
@@ -53,7 +60,7 @@ struct EmojiArtDocumentView: View {
             }
         }
     }
-    
+
     @State private var steadyStateZoomScale: CGFloat = 1.0
     @GestureState private var gestureZoomScale: CGFloat = 1.0
     
@@ -125,6 +132,18 @@ struct EmojiArtDocumentView: View {
             }
         }
         return found
+    }
+
+    @State var selectedEmojis = Set<EmojiArt.Emoji>()
+    private let wiggleDuration: Double = 0.2
+    private let wiggleAmount: Double = 20
+
+    private func tapToSelectEmoji(_ emoji: EmojiArt.Emoji) -> some Gesture {
+        TapGesture()
+            .onEnded {
+                self.selectedEmojis.toggle(emoji)
+                print(self.selectedEmojis)
+            }
     }
     
     private let defaultEmojiSize: CGFloat = 40
