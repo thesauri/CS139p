@@ -33,7 +33,7 @@ struct EmojiArtDocumentView: View {
                         .gesture(self.doubleTapToZoom(in: geometry.size))
                     ForEach(self.document.emojis) { emoji in
                         Text(emoji.text)
-                            .font(animatableWithSize: emoji.fontSize * self.zoomScale)
+                            .font(animatableWithSize: self.fontSize(for: emoji))
                             .position(self.position(for: emoji, in: geometry.size))
                             .brightness(self.selectedEmojis.contains(emoji) ? self.selectedBrightness : 0)
                             .gesture(self.panSelectedEmojis(emoji))
@@ -62,7 +62,11 @@ struct EmojiArtDocumentView: View {
     @GestureState private var gestureZoomScale: CGFloat = 1.0
     
     private var zoomScale: CGFloat {
-        steadyStateZoomScale * gestureZoomScale
+        if self.selectedEmojis.isEmpty {
+            return steadyStateZoomScale * gestureZoomScale
+        } else {
+            return steadyStateZoomScale
+        }
     }
     
     private func zoomGesture() -> some Gesture {
@@ -71,7 +75,13 @@ struct EmojiArtDocumentView: View {
                 gestureZoomScale = latestGestureScale
             }
             .onEnded { finalGestureScale in
-                self.steadyStateZoomScale *= finalGestureScale
+                if self.selectedEmojis.isEmpty {
+                    self.steadyStateZoomScale *= finalGestureScale
+                } else {
+                    for selectedEmoji in self.selectedEmojis {
+                        self.document.scaleEmoji(selectedEmoji, by: finalGestureScale)
+                    }
+                }
             }
     }
     
@@ -120,6 +130,14 @@ struct EmojiArtDocumentView: View {
         location = CGPoint(x: location.x + size.width/2, y: location.y + size.height/2)
         location = CGPoint(x: location.x + panOffset.width, y: location.y + panOffset.height)
         return location
+    }
+
+    private func fontSize(for emoji: EmojiArt.Emoji) -> CGFloat {
+        if selectedEmojis.contains(emoji) {
+            return emoji.fontSize * (self.zoomScale * self.gestureZoomScale)
+        } else {
+            return emoji.fontSize * self.zoomScale
+        }
     }
     
     private func drop(providers: [NSItemProvider], at location: CGPoint) -> Bool {
