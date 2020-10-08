@@ -51,14 +51,20 @@ struct EmojiArtDocumentView: View {
                     .offset(panOffset)
             )
                 .gesture(doubleTapToZoom(in: geometry.size))
-            ForEach(document.emojis) { emoji in
-                Text(emoji.text)
-                    .font(animatableWithSize: self.fontSize(for: emoji))
-                    .position(self.position(for: emoji, in: geometry.size))
-                    .brightness(self.selectedEmojis.contains(emoji) ? self.selectedBrightness : 0)
-                    .gesture(self.panSelectedEmojis(emoji))
-                    .gesture(self.tapToSelectEmoji(emoji))
-                    .transition(.opacity)
+            if self.isLoading {
+                Image(systemName: "timer")
+                    .imageScale(.large)
+                    .spinning()
+            } else {
+                ForEach(document.emojis) { emoji in
+                    Text(emoji.text)
+                        .font(animatableWithSize: self.fontSize(for: emoji))
+                        .position(self.position(for: emoji, in: geometry.size))
+                        .brightness(self.selectedEmojis.contains(emoji) ? self.selectedBrightness : 0)
+                        .gesture(self.panSelectedEmojis(emoji))
+                        .gesture(self.tapToSelectEmoji(emoji))
+                        .transition(.opacity)
+                }
             }
         }
         .clipped()
@@ -67,6 +73,9 @@ struct EmojiArtDocumentView: View {
         .gesture(panGesture())
         .gesture(zoomGesture())
         .edgesIgnoringSafeArea([.horizontal, .bottom])
+        .onReceive(self.document.$backgroundImage) { image in
+            self.zoomToFit(image, in: geometry.size)
+        }
         .onDrop(of: ["public.image","public.text"], isTargeted: nil) { providers, location in
             // SwiftUI bug (as of 13.4)? the location is supposed to be in our coordinate system
             // however, the y coordinate appears to be in the global coordinate system
@@ -103,6 +112,10 @@ struct EmojiArtDocumentView: View {
                     }
                 }
             }
+    }
+
+    var isLoading: Bool {
+        document.backgroundURL != nil && document.backgroundImage == nil
     }
     
     @State private var steadyStatePanOffset: CGSize = .zero
@@ -162,7 +175,7 @@ struct EmojiArtDocumentView: View {
     
     private func drop(providers: [NSItemProvider], at location: CGPoint) -> Bool {
         var found = providers.loadFirstObject(ofType: URL.self) { url in
-            self.document.setBackgroundURL(url)
+            self.document.backgroundURL = url
         }
         if !found {
             found = providers.loadObjects(ofType: String.self) { string in

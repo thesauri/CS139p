@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1632F00252F04A400B208C8 /* Spinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1632EFF252F04A400B208C8 /* Spinning.swift */; };
 		D1CEC5D72525E24C00172769 /* Set+toggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CEC5D62525E24C00172769 /* Set+toggle.swift */; };
 		EC6BD6D324579CB100DC5EE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BD6D224579CB100DC5EE0 /* AppDelegate.swift */; };
 		EC6BD6D524579CB100DC5EE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BD6D424579CB100DC5EE0 /* SceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D1632EFF252F04A400B208C8 /* Spinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinning.swift; sourceTree = "<group>"; };
 		D1CEC5D62525E24C00172769 /* Set+toggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Set+toggle.swift"; sourceTree = "<group>"; };
 		EC6BD6CF24579CB100DC5EE0 /* EmojiArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmojiArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6BD6D224579CB100DC5EE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				EC6BD6E82457A09400DC5EE0 /* EmojiArt.swift */,
 				EC6BD6E624579CE000DC5EE0 /* EmojiArtDocument.swift */,
 				EC6BD6D624579CB100DC5EE0 /* EmojiArtDocumentView.swift */,
+				D1632EFF252F04A400B208C8 /* Spinning.swift */,
 				EC6BD6F2245A48D100DC5EE0 /* OptionalImage.swift */,
 				EC6BD6F4245A48D100DC5EE0 /* AnimatableSystemFontModifier.swift */,
 				EC6BD6EC245963C900DC5EE0 /* EmojiArtExtensions.swift */,
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC6BD6D324579CB100DC5EE0 /* AppDelegate.swift in Sources */,
+				D1632F00252F04A400B208C8 /* Spinning.swift in Sources */,
 				D1CEC5D72525E24C00172769 /* Set+toggle.swift in Sources */,
 				EC6BD6D524579CB100DC5EE0 /* SceneDelegate.swift in Sources */,
 				EC6BD6ED245963C900DC5EE0 /* EmojiArtExtensions.swift in Sources */,
