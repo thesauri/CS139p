@@ -30,7 +30,8 @@ struct MemoryGameThemes {
         MemoryGameThemes.themes.randomElement()!
     }
 
-    struct Theme: Codable {
+    struct Theme: Identifiable, Codable {
+        let id: UUID = UUID()
         var name: String
         var emojis: [String]
         var color: UIColor.RGB

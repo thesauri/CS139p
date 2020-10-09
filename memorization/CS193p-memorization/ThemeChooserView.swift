@@ -12,8 +12,21 @@ struct ThemeChooserView: View {
     var body: some View {
         NavigationView {
             List {
-                NavigationLink(destination: EmojiMemoryGameView(emojiCardGame: EmojiMemoryGame())) {
-                    Text("Hello world")
+                ForEach(MemoryGameThemes.themes) { theme in
+                    NavigationLink(destination: EmojiMemoryGameView(emojiCardGame: EmojiMemoryGame(theme: theme))) {
+                        GeometryReader { geometry in
+                            HStack {
+                                Circle()
+                                    .foregroundColor(Color(theme.color))
+                                    .frame(width: geometry.size.height, height: geometry.size.height)
+                                VStack(alignment: .leading) {
+                                    Text(theme.name)
+                                    Text(theme.emojis.joined()).font(.footnote)
+                                }
+                                Spacer()
+                            }
+                        }
+                    }
                 }
             }
             .navigationBarTitle("Memorize")

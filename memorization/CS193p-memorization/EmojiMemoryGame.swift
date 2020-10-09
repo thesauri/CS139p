@@ -14,12 +14,12 @@ class EmojiMemoryGame: ObservableObject {
             printThemeAsJson()
         }
     }
+
     @Published private var memoryGame: MemoryGame<String>
 
-    init() {
-        let randomTheme = MemoryGameThemes.randomTheme()
-        self.theme = randomTheme
-        self.memoryGame = EmojiMemoryGame.createMemoryGame(theme: randomTheme)
+    init(theme: MemoryGameThemes.Theme) {
+        self.theme = theme
+        self.memoryGame = EmojiMemoryGame.createMemoryGame(theme: theme)
         printThemeAsJson()
     }
 
