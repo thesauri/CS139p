@@ -12,25 +12,23 @@ struct EmojiMemoryGameView: View {
     @ObservedObject var emojiCardGame: EmojiMemoryGame
 
     var body: some View {
-        NavigationView {
-            Grid(emojiCardGame.cards) { card in
-                Card(card: card, themeColor: Color(self.emojiCardGame.theme.color)).onTapGesture {
-                    withAnimation(.linear(duration: 0.75)) {
-                        self.emojiCardGame.choose(card: card)
-                    }
+        Grid(emojiCardGame.cards) { card in
+            Card(card: card, themeColor: Color(self.emojiCardGame.theme.color)).onTapGesture {
+                withAnimation(.linear(duration: 0.75)) {
+                    self.emojiCardGame.choose(card: card)
                 }
-                .padding()
             }
-            .navigationBarTitle("Score: \(emojiCardGame.score)")
-            .navigationBarItems(
-                leading: Text(emojiCardGame.theme.name),
-                trailing: Button("New game") {
-                    withAnimation(.easeInOut) {
-                        self.emojiCardGame.restartGame()
-                    }
-                }
-            )
+            .padding()
         }
+        .navigationBarTitle("Score: \(emojiCardGame.score)")
+        .navigationBarItems(
+            leading: Text(emojiCardGame.theme.name),
+            trailing: Button("New game") {
+                withAnimation(.easeInOut) {
+                    self.emojiCardGame.restartGame()
+                }
+            }
+        )
     }
 }
 
