@@ -29,7 +29,7 @@ struct PaletteChooser: View {
                 .onTapGesture {
                     self.showPaletteEditor = true
                 }
-                .sheet(isPresented: $showPaletteEditor, content: {
+                .popover(isPresented: $showPaletteEditor, content: {
                     PaletteEditor(chosenPalette: self.$chosenPalette, isShowing: self.$showPaletteEditor)
                         .environmentObject(self.document)
                         .frame(minWidth: 300, minHeight: 500)
@@ -57,7 +57,6 @@ struct PaletteEditor: View {
                     }, label: { Text("Done") }).padding()
                 }
             }
-            Text("Palette Editor").font(.headline).padding()
             Divider()
             Form {
                 Section {
