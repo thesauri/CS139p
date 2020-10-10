@@ -44,6 +44,14 @@ class ThemeStore: ObservableObject {
     }
 
     // MARK: - Intents
+    func addEmojisToTheme(_ theme: Theme, newEmojis: String) {
+        for newEmoji in newEmojis {
+            if !(self.themes[theme]?.emojis.contains(String(newEmoji)) ?? true)  {
+                self.themes[theme]?.emojis.insert(String(newEmoji), at: 0)
+            }
+        }
+    }
+
     func addTheme(_ theme: Theme) {
         self.themes[theme] = theme
     }

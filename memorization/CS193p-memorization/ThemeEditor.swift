@@ -13,6 +13,7 @@ struct ThemeEditor: View {
     @EnvironmentObject var themeStore: ThemeStore
     var theme: Theme
     @State private var themeName: String = ""
+    @State private var emojiToAdd: String = ""
 
     var body: some View {
         VStack(spacing: 0) {
@@ -35,6 +36,17 @@ struct ThemeEditor: View {
                             self.themeStore.renameTheme(self.theme, newName: self.themeName)
                         }
                     })
+                }
+                Section(header: Text("Add emoji")) {
+                    HStack {
+                        TextField("Emoji", text: $emojiToAdd)
+                        Button(action: {
+                            self.themeStore.addEmojisToTheme(self.theme, newEmojis: self.emojiToAdd)
+                            self.emojiToAdd = ""
+                        }, label: {
+                            Text("Add")
+                        })
+                    }
                 }
             }
             Spacer()
