@@ -31,6 +31,13 @@ struct ThemeChooserView: View {
                     }
                 }
             }
+            .navigationBarItems(leading:
+                Button(action: {
+                    self.themeStore.addUntitledTheme()
+                }, label: {
+                    Image(systemName: "plus").imageScale(.large)
+                })
+            )
             .navigationBarTitle("Memorize")
         }
     }
