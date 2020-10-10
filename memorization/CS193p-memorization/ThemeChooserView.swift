@@ -9,10 +9,12 @@
 import SwiftUI
 
 struct ThemeChooserView: View {
+    @EnvironmentObject var themeStore: ThemeStore
+
     var body: some View {
         NavigationView {
             List {
-                ForEach(MemoryGameThemes.themes) { theme in
+                ForEach(themeStore.allThemes) { theme in
                     NavigationLink(destination: EmojiMemoryGameView(emojiCardGame: EmojiMemoryGame(theme: theme))) {
                         GeometryReader { geometry in
                             HStack {
@@ -31,11 +33,5 @@ struct ThemeChooserView: View {
             }
             .navigationBarTitle("Memorize")
         }
-    }
-}
-
-struct ThemeChooserView_Previews: PreviewProvider {
-    static var previews: some View {
-        ThemeChooserView()
     }
 }

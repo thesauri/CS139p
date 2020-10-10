@@ -90,11 +90,3 @@ struct Card: View {
         min(size.width, size.height) * 0.5
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let game = EmojiMemoryGame(theme: MemoryGameThemes.themes[0])
-        game.choose(card: game.cards[1])
-        return EmojiMemoryGameView(emojiCardGame: game)
-    }
-}

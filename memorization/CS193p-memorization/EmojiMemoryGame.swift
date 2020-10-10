@@ -9,7 +9,7 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-    @Published var theme: MemoryGameThemes.Theme {
+    @Published var theme: Theme {
         didSet {
             printThemeAsJson()
         }
@@ -17,19 +17,13 @@ class EmojiMemoryGame: ObservableObject {
 
     @Published private var memoryGame: MemoryGame<String>
 
-    init(theme: MemoryGameThemes.Theme) {
+    init(theme: Theme) {
         self.theme = theme
         self.memoryGame = EmojiMemoryGame.createMemoryGame(theme: theme)
         printThemeAsJson()
     }
 
-    private func randomizeThemeAndRestartGame() {
-        let randomTheme = MemoryGameThemes.randomTheme()
-        self.theme = randomTheme
-        self.memoryGame = EmojiMemoryGame.createMemoryGame(theme: randomTheme)
-    }
-
-    private static func createMemoryGame(theme: MemoryGameThemes.Theme) -> MemoryGame<String> {
+    private static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
         let themeOrRandomPairCount = theme.numberOfPairsOfCards
         return MemoryGame(numberOfCardPairs: themeOrRandomPairCount) { pairIndex in
             theme.emojis[pairIndex]
@@ -58,6 +52,6 @@ class EmojiMemoryGame: ObservableObject {
     }
 
     func restartGame() {
-        randomizeThemeAndRestartGame()
+        self.memoryGame = EmojiMemoryGame.createMemoryGame(theme: self.theme)
     }
 }
