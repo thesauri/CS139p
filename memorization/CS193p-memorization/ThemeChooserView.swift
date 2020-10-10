@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ThemeChooserView: View {
     @EnvironmentObject var themeStore: ThemeStore
+    @State private var editMode: EditMode = .inactive
 
     var body: some View {
         NavigationView {
@@ -30,15 +31,21 @@ struct ThemeChooserView: View {
                         }
                     }
                 }
+                .onDelete { indexSet in
+                    indexSet.map { self.themeStore.allThemes[$0] }.forEach { theme in
+                        self.themeStore.removeTheme(theme)
+                    }
+                }
             }
             .navigationBarItems(leading:
                 Button(action: {
                     self.themeStore.addUntitledTheme()
                 }, label: {
                     Image(systemName: "plus").imageScale(.large)
-                })
+                }), trailing: EditButton()
             )
             .navigationBarTitle("Memorize")
+            .environment(\.editMode, $editMode)
         }
     }
 }

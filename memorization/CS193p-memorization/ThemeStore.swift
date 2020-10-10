@@ -52,6 +52,10 @@ class ThemeStore: ObservableObject {
         let defaultTheme = Theme(name: "Untitled", emojis: ["🇸🇪", "🇫🇮"], color: ThemeColors.wetAsphalt, numberOfPairsOfCards: 2)
         addTheme(defaultTheme)
     }
+
+    func removeTheme(_ theme: Theme) {
+        self.themes[theme.name] = nil
+    }
 }
 
 struct ThemeColors {
