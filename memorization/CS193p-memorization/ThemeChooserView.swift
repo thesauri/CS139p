@@ -11,6 +11,7 @@ import SwiftUI
 struct ThemeChooserView: View {
     @EnvironmentObject var themeStore: ThemeStore
     @State private var editMode: EditMode = .inactive
+    @State private var editingTheme: Theme?
 
     var body: some View {
         NavigationView {
@@ -19,14 +20,25 @@ struct ThemeChooserView: View {
                     NavigationLink(destination: EmojiMemoryGameView(emojiCardGame: EmojiMemoryGame(theme: theme))) {
                         GeometryReader { geometry in
                             HStack {
-                                Circle()
-                                    .foregroundColor(Color(theme.color))
-                                    .frame(width: geometry.size.height, height: geometry.size.height)
+                                ZStack {
+                                    Circle()
+                                        .foregroundColor(Color(theme.color))
+                                        .frame(width: geometry.size.height, height: geometry.size.height)
+                                    if self.editMode == .active {
+                                        Image(systemName: "pencil")
+                                            .foregroundColor(.white)
+                                    }
+                                }
                                 VStack(alignment: .leading) {
                                     Text(theme.name)
                                     Text(theme.emojis.joined()).font(.footnote)
                                 }
                                 Spacer()
+                            }
+                            .onTapGesture {
+                                if self.editMode == .active && self.editingTheme == nil {
+                                    self.editingTheme = theme
+                                }
                             }
                         }
                     }
@@ -36,6 +48,10 @@ struct ThemeChooserView: View {
                         self.themeStore.removeTheme(theme)
                     }
                 }
+            }
+            .sheet(item: self.$editingTheme) { theme in
+                ThemeEditor(theme: theme)
+                    .environmentObject(self.themeStore)
             }
             .navigationBarItems(leading:
                 Button(action: {

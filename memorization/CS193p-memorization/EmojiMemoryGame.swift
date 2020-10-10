@@ -9,31 +9,19 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-    @Published var theme: Theme {
-        didSet {
-            printThemeAsJson()
-        }
-    }
+    @Published var theme: Theme
 
     @Published private var memoryGame: MemoryGame<String>
 
     init(theme: Theme) {
         self.theme = theme
         self.memoryGame = EmojiMemoryGame.createMemoryGame(theme: theme)
-        printThemeAsJson()
     }
 
     private static func createMemoryGame(theme: Theme) -> MemoryGame<String> {
         let themeOrRandomPairCount = theme.numberOfPairsOfCards
         return MemoryGame(numberOfCardPairs: themeOrRandomPairCount) { pairIndex in
             theme.emojis[pairIndex]
-        }
-    }
-
-    private func printThemeAsJson() {
-        let encoder = JSONEncoder()
-        if let themeAsJson = (try? encoder.encode(theme))?.utf8 {
-            print(themeAsJson)
         }
     }
 

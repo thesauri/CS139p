@@ -10,7 +10,7 @@ import SwiftUI
 import Combine
 
 class ThemeStore: ObservableObject {
-    @Published private var themes = [String:Theme]()
+    @Published private var themes = [UUIDString:Theme]()
     private var autosave: AnyCancellable?
 
     init() {
@@ -45,7 +45,7 @@ class ThemeStore: ObservableObject {
 
     // MARK: - Intents
     func addTheme(_ theme: Theme) {
-        self.themes[theme.name] = theme
+        self.themes[theme] = theme
     }
 
     func addUntitledTheme() {
@@ -54,7 +54,11 @@ class ThemeStore: ObservableObject {
     }
 
     func removeTheme(_ theme: Theme) {
-        self.themes[theme.name] = nil
+        self.themes[theme] = nil
+    }
+
+    func renameTheme(_ theme: Theme, newName: String) {
+        self.themes[theme]?.name = newName
     }
 }
 
@@ -67,31 +71,50 @@ struct ThemeColors {
 }
 
 struct Theme: Identifiable, Codable, Hashable {
-    let id: UUID = UUID()
+    let id: UUID
     var name: String
     var emojis: [String]
     var color: UIColor.RGB
     var numberOfPairsOfCards: Int
+
+    init(id: UUID? = nil, name: String, emojis: [String], color: UIColor.RGB, numberOfPairsOfCards: Int) {
+        self.id = id ?? UUID()
+        self.name = name
+        self.emojis = emojis
+        self.color = color
+        self.numberOfPairsOfCards = numberOfPairsOfCards
+    }
 }
 
-extension Dictionary where Key == String, Value == Theme {
+extension Dictionary where Key == UUIDString, Value == Theme {
     var asPropertyList: [String:String] {
-        var nameToEncodedTheme = [String:String]()
+        var uuidToEncodedTheme = [String:String]()
         let encoder = JSONEncoder()
-        for (name, theme) in self {
-            nameToEncodedTheme[name] = try! encoder.encode(theme).utf8
+        for (uuid, theme) in self {
+            uuidToEncodedTheme[uuid] = try! encoder.encode(theme).utf8
         }
-        return nameToEncodedTheme
+        return uuidToEncodedTheme
     }
 
     init(fromPropertyList plist: Any?) {
         self.init()
-        let nameToEncodedTheme = plist as? [String:String] ?? [:]
+        let uuidToEncodedTheme = plist as? [String:String] ?? [:]
         let decoder = JSONDecoder()
-        for (name, encodedTheme) in nameToEncodedTheme {
+        for (uuidString, encodedTheme) in uuidToEncodedTheme {
             let encodedThemeData = encodedTheme.data(using: .utf8)!
             let theme = try! decoder.decode(Theme.self, from: encodedThemeData)
-            self[name] = theme
+            self[uuidString] = theme
+        }
+    }
+
+    subscript(index: Theme) -> Theme? {
+        get {
+            self[index.id.uuidString]
+        }
+        set {
+            self[index.id.uuidString] = newValue
         }
     }
 }
+
+typealias UUIDString = String
