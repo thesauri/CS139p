@@ -65,9 +65,16 @@ class ThemeStore: ObservableObject {
         addTheme(defaultTheme)
     }
 
+    func updatePairCount(for theme: Theme, numberOfPairsOfCards: Int) {
+        self.themes[theme]?.numberOfPairsOfCards = numberOfPairsOfCards
+    }
+
     func removeEmojiFromTheme(_ theme: Theme, emoji: String) {
-        let newEmojis = theme.emojis.filter { $0 != emoji }
+        let newEmojis = self.themes[theme]?.emojis.filter { $0 != emoji } ?? []
         self.themes[theme]?.emojis = newEmojis
+        if let emojiCount = self.themes[theme]?.emojis.count, self.themes[theme]?.numberOfPairsOfCards ?? 0 > emojiCount {
+            self.themes[theme]?.numberOfPairsOfCards = emojiCount
+        }
     }
 
     func removeTheme(_ theme: Theme) {

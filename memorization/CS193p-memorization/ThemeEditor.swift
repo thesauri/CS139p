@@ -53,12 +53,33 @@ struct ThemeEditor: View {
                         HStack {
                             ForEach(self.themeStore.theme(id: self.theme.id.uuidString)?.emojis ?? [], id: \.self) { emoji in
                                 Button(action: {
-                                    self.themeStore.removeEmojiFromTheme(self.theme, emoji: emoji)
+                                    if let theme = self.themeStore.theme(id: self.theme.id.uuidString), theme.emojis.count > 2 {
+                                        self.themeStore.removeEmojiFromTheme(self.theme, emoji: emoji)
+                                    }
                                 }, label: {
                                     Text(emoji).font(.largeTitle)
                                 })
                             }
                         }
+                    }
+                }
+                Section(header: Text("Card Count")) {
+                    HStack {
+                        Text("\(self.themeStore.theme(id: self.theme.id.uuidString)?.numberOfPairsOfCards ?? 0) Pairs")
+                        Spacer()
+                        Stepper(onIncrement: {
+                            if let theme = self.themeStore.theme(id: self.theme.id.uuidString), theme.numberOfPairsOfCards < theme.emojis.count {
+                                let numberOfPairsOfCards = theme.numberOfPairsOfCards + 1
+                                self.themeStore.updatePairCount(for: theme, numberOfPairsOfCards: numberOfPairsOfCards)
+                            }
+                        }, onDecrement: {
+                            if let theme = self.themeStore.theme(id: self.theme.id.uuidString), theme.numberOfPairsOfCards > 2 {
+                                let numberOfPairsOfCards = theme.numberOfPairsOfCards - 1
+                                self.themeStore.updatePairCount(for: theme, numberOfPairsOfCards: numberOfPairsOfCards)
+                            }
+                        }, label: {
+                            EmptyView()
+                        })
                     }
                 }
             }
