@@ -65,6 +65,10 @@ class ThemeStore: ObservableObject {
         addTheme(defaultTheme)
     }
 
+    func updateColor(for theme: Theme, newColor: UIColor.RGB) {
+        self.themes[theme]?.color = newColor
+    }
+
     func updatePairCount(for theme: Theme, numberOfPairsOfCards: Int) {
         self.themes[theme]?.numberOfPairsOfCards = numberOfPairsOfCards
     }

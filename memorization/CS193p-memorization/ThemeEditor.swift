@@ -82,9 +82,41 @@ struct ThemeEditor: View {
                         })
                     }
                 }
+                Section(header: Text("Color")) {
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach([
+                                ThemeColors.alizarin,
+                                ThemeColors.emerald,
+                                ThemeColors.peterRiver,
+                                ThemeColors.sunFlower,
+                                ThemeColors.wetAsphalt
+                            ], id: \.self) { themeColor in
+                                Button(action: {
+                                    if let theme = self.themeStore.theme(id: self.theme.id.uuidString) {
+                                        self.themeStore.updateColor(for: theme, newColor: themeColor)
+                                    }
+                                }, label: {
+                                    ZStack {
+                                        RoundedRectangle(cornerRadius: self.cornerRadius)
+                                            .fill(Color(themeColor))
+                                            .aspectRatio(1.0, contentMode: .fit)
+                                        if self.themeStore.theme(id: self.theme.id.uuidString)?.color == themeColor {
+                                            Image(systemName: "checkmark.circle")
+                                                .foregroundColor(.white)
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    }
+                }
             }
             Spacer()
         }
         .onAppear { self.themeName = self.theme.name }
     }
+
+    // MARK: - Drawing constants
+    let cornerRadius: CGFloat = 4
 }
