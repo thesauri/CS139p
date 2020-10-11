@@ -27,6 +27,11 @@ struct ThemeChooserView: View {
                                     if self.editMode == .active {
                                         Image(systemName: "pencil")
                                             .foregroundColor(.white)
+                                            .onTapGesture {
+                                                if self.editMode == .active && self.editingTheme == nil {
+                                                    self.editingTheme = theme
+                                                }
+                                        }
                                     }
                                 }
                                 VStack(alignment: .leading) {
@@ -34,11 +39,6 @@ struct ThemeChooserView: View {
                                     Text(theme.emojis.joined()).font(.footnote)
                                 }
                                 Spacer()
-                            }
-                            .onTapGesture {
-                                if self.editMode == .active && self.editingTheme == nil {
-                                    self.editingTheme = theme
-                                }
                             }
                         }
                     }
