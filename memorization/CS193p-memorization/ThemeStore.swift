@@ -43,6 +43,10 @@ class ThemeStore: ObservableObject {
         [Theme](themes.values).sorted { $0.name < $1.name }
     }
 
+    func theme(id: UUIDString) -> Theme? {
+        self.themes[id]
+    }
+
     // MARK: - Intents
     func addEmojisToTheme(_ theme: Theme, newEmojis: String) {
         for newEmoji in newEmojis {
@@ -59,6 +63,11 @@ class ThemeStore: ObservableObject {
     func addUntitledTheme() {
         let defaultTheme = Theme(name: "Untitled", emojis: ["🇸🇪", "🇫🇮"], color: ThemeColors.wetAsphalt, numberOfPairsOfCards: 2)
         addTheme(defaultTheme)
+    }
+
+    func removeEmojiFromTheme(_ theme: Theme, emoji: String) {
+        let newEmojis = theme.emojis.filter { $0 != emoji }
+        self.themes[theme]?.emojis = newEmojis
     }
 
     func removeTheme(_ theme: Theme) {

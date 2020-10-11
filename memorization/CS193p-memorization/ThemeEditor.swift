@@ -48,6 +48,19 @@ struct ThemeEditor: View {
                         })
                     }
                 }
+                Section(header: Text("Touch to remove emojis")) {
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(self.themeStore.theme(id: self.theme.id.uuidString)?.emojis ?? [], id: \.self) { emoji in
+                                Button(action: {
+                                    self.themeStore.removeEmojiFromTheme(self.theme, emoji: emoji)
+                                }, label: {
+                                    Text(emoji).font(.largeTitle)
+                                })
+                            }
+                        }
+                    }
+                }
             }
             Spacer()
         }
